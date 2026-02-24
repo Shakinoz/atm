@@ -4,9 +4,14 @@
   flex-direction: column;
   justify-content: center;
   width: 30rem;
+
   .password {
     text-align: center;
     font-size: larger;
     min-height: 60px;
+  }
+
+  .leave {
+    margin-top: 15px;
   }
 }

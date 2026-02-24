@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, effect, inject, input } from '@angular/core';
+import { Component, effect, inject, input, output } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Card } from '../../models/card';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AtmStep } from '../../models/enums/atm-step.enum';
 
 export function isMultiple(num: number): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -40,6 +41,7 @@ export function isMultiple(num: number): ValidatorFn {
 export class AtmActionsMenu {
   private readonly _snackBar = inject(MatSnackBar);
   public readonly currentCard = input.required<Card>();
+  public readonly onLeave = output<AtmStep>();
 
   public readonly withdrawal = new FormControl(null, [
     Validators.required,
@@ -92,5 +94,9 @@ export class AtmActionsMenu {
 
     this.withdrawal.addValidators(this.withdrawalMaxValidationRef);
     this.withdrawal.updateValueAndValidity();
+  }
+
+  public handleLeave():void {
+    this.onLeave.emit(AtmStep.LANDING)
   }
 }

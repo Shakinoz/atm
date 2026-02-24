@@ -1,0 +1,44 @@
+<h2>Mes cartes</h2>
+<p class="title_desc">Gérez vos cartes bancaires</p>
+
+@for (customer of customers; track customer._firstname) {
+<div class="customer_name">
+    <h3>{{customer._firstname}}</h3>
+    <p class="card_count">{{customer._cards.length}} carte{{customer._cards.length > 1 ? "s" : ""}}</p>
+</div>
+@for(card of customer._cards; track card._cardNumber) {
+<mat-card appearance="outlined">
+    <div class="card_info">
+        <mat-card-header>
+            <mat-card-title>{{card._bank}}</mat-card-title>
+            <mat-card-subtitle>{{card._type}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{card._cardNumber}}</p>
+        </mat-card-content>
+    </div>
+    <div class="card_actions">
+        <button matFab (click)="editCard(card._cardNumber)" color="warn">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button matFab (click)="deleteCard(customer._firstname, customer._lastname, card._cardNumber)" color="warn">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+
+</mat-card>
+}
+}
+
+<div class="actions">
+    <button matFab extended>
+        <mat-icon>add</mat-icon>
+        Add Cart
+    </button>
+    <button matFab extended>
+        <mat-icon>add</mat-icon>
+        Add Customer
+    </button>
+</div>
+
+<div *ngIf="showEditForm">Content to render when condition is true.</div>

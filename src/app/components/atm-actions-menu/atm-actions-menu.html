@@ -32,8 +32,8 @@
       <mat-error>Attention le montant doit être un multiple de <strong>{{ 5| currency: 'EUR' }}</strong></mat-error>
       }
     </mat-form-field>
-
   </mat-expansion-panel>
+
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -56,4 +56,8 @@
       }
     </mat-form-field>
   </mat-expansion-panel>
+  <button class="leave" matFab extended (click)="handleLeave()">
+    <mat-icon>exit_to_app</mat-icon>
+    Quitter
+  </button>
 </mat-accordion>
