@@ -11,7 +11,7 @@ import { Card } from '../../models/card';
   styleUrl: './atm-card-selection.scss',
 })
 export class AtmCardSelection {
-  public readonly customers = CUSTOMERS;
+  public readonly customers = JSON.parse(localStorage.getItem('customers') || '[]');
 
   public readonly onChooseCard = output<Card>();
 

@@ -5,7 +5,6 @@ import { AtmCardSelection } from '../atm-card-selection/atm-card-selection';
 import { AtmLanding } from '../atm-landing/atm-landing';
 import { AtmStep } from '../../models/enums/atm-step.enum';
 import { Card } from '../../models/card';
-import { CUSTOMERS } from '../../models/data/customers.mock';
 
 @Component({
   selector: 'app-atm-screen',

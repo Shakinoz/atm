@@ -3,23 +3,25 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Card } from '../../models/card';
-import { NgIf } from '@angular/common';
+import { AddCardForm } from "../add-card-form/add-card-form";
 
 @Component({
   selector: 'app-customers-list',
-  imports: [MatCardModule, MatButtonModule,MatIconModule,NgIf],
+  imports: [MatCardModule, MatButtonModule, MatIconModule, AddCardForm],
   templateUrl: './customers-list.html',
   styleUrl: './customers-list.scss',
 })
 export class CustomersList {
-  public readonly customers = JSON.parse(localStorage.getItem('customers') || '[]');
-  public showEditForm:boolean = false;
-  public selectedCard:Card | null = null;
+  public customers = JSON.parse(localStorage.getItem('customers') || '[]');
+  public AddCardForm = false;
 
-  public showEditCardForm(cardNumber: string): void {
-    this.showEditForm = true;
-    this.selectedCard = this.customers.flatMap((customer: any) => customer.cards)
-      .find((card: Card) => card.cardNumber === cardNumber);
+  public showAddCardForm(): void {
+    this.AddCardForm = true;
+  }
+
+  public hideAddCardForm(): void {
+    this.AddCardForm = false;
+    this.customers = JSON.parse(localStorage.getItem('customers') || '[]');
   }
 
   public deleteCard(first_name:string,lastname: string, cardNumber:string): void {

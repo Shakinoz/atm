@@ -1,5 +1,15 @@
-<h2>Mes cartes</h2>
-<p class="title_desc">Gérez vos cartes bancaires</p>
+<div class="header">
+    <h2>Mes cartes</h2>
+    <p class="title_desc">Gérez vos cartes bancaires</p>
+
+    <div class="actions">
+        <button matFab extended (click)="showAddCardForm()">
+            <mat-icon>add</mat-icon>
+            Add Cart
+        </button>
+    </div>
+</div>
+
 
 @for (customer of customers; track customer._firstname) {
 <div class="customer_name">
@@ -18,9 +28,6 @@
         </mat-card-content>
     </div>
     <div class="card_actions">
-        <button matFab (click)="editCard(card._cardNumber)" color="warn">
-            <mat-icon>edit</mat-icon>
-        </button>
         <button matFab (click)="deleteCard(customer._firstname, customer._lastname, card._cardNumber)" color="warn">
             <mat-icon>delete</mat-icon>
         </button>
@@ -30,15 +37,6 @@
 }
 }
 
-<div class="actions">
-    <button matFab extended>
-        <mat-icon>add</mat-icon>
-        Add Cart
-    </button>
-    <button matFab extended>
-        <mat-icon>add</mat-icon>
-        Add Customer
-    </button>
-</div>
-
-<div *ngIf="showEditForm">Content to render when condition is true.</div>
+@if(AddCardForm) {
+<app-add-card-form (cardAdded)="hideAddCardForm()"></app-add-card-form>
+}

@@ -1,0 +1,68 @@
+<form [formGroup]="cardForm" (ngSubmit)="submitForm()">
+
+    <mat-form-field appearance="outline">
+        <mat-label>Client</mat-label>
+        <mat-select formControlName="customer">
+            @for (cust of customers; track cust) {
+            <mat-option [value]="cust._firstname + ' ' + cust._lastname">
+                {{ cust._firstname }} {{ cust._lastname }}
+            </mat-option>
+            }
+        </mat-select>
+
+        @if (customer.hasError('required') && customer.touched) {
+        <mat-error>Veuillez sélectionner un client</mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Numéro de carte</mat-label>
+        <input matInput formControlName="cardNumber" placeholder="1234-5678-9012-3456" />
+        @if (cardNumber.hasError('required') && cardNumber.touched) {
+        <mat-error>Le numéro de carte est requis</mat-error>
+        }
+        @if (cardNumber.hasError('pattern') && cardNumber.touched) {
+        <mat-error>Format invalide (ex: 1234-5678-9012-3456)</mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Type de carte</mat-label>
+        <mat-select formControlName="cardType">
+            <mat-option value="MASTERCARD">Mastercard</mat-option>
+            <mat-option value="VISA">Visa</mat-option>
+            <mat-option value="AMEX">American Express</mat-option>
+        </mat-select>
+        @if (cardType.hasError('required') && cardType.touched) {
+        <mat-error>Veuillez sélectionner un type de carte</mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Banque</mat-label>
+        <mat-select formControlName="bankType">
+            <mat-option value="BELFIUS">Belfius</mat-option>
+            <mat-option value="ING">ING</mat-option>
+            <mat-option value="KBC">KBC</mat-option>
+        </mat-select>
+        @if (bankType.hasError('required') && bankType.touched) {
+        <mat-error>Veuillez sélectionner une banque</mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>PIN</mat-label>
+        <input matInput type="password" formControlName="pin" placeholder="****" maxlength="4" />
+        @if (pin.hasError('required') && pin.touched) {
+        <mat-error>Le PIN est requis</mat-error>
+        }
+        @if ((pin.hasError('minlength') || pin.hasError('maxlength')) && pin.touched) {
+        <mat-error>Le PIN doit faire exactement 4 caractères</mat-error>
+        }
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="cardForm.invalid">
+        Créer la carte
+    </button>
+
+</form>
