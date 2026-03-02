@@ -1,21 +1,96 @@
+@use '../../../style/variables.scss' as *;
+
 :host {
-  mat-card {
+  display: block;
+  max-width: 480px;
+  margin: 2rem auto;
+
+  .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+
+    h2 {
+      margin: 0 0 0.25rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $color-text-primary;
+    }
+
+    .title_desc {
+      margin: 0 0 1.5rem;
+      color: $color-text-secondary;
+      font-size: 0.875rem;
+    }
+
+    .actions {
+      margin-top: 1rem;
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 1000;
+
+      button {
+        background-color: $color-accent-muted !important;
+        color: $color-accent !important;
+        border: 1px solid $color-border-accent !important;
+
+        .mat-icon {
+          color: $color-accent !important;
+        }
+
+        &:hover {
+          background-color: $color-accent-muted !important;
+        }
+      }
+    }
+  }
+
+  .customer_name {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    gap: 20px;
+    gap: 10px;
+    margin: 1.5rem 0 0.75rem;
+
+    h3 {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: $color-text-primary;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card_count {
+      margin: 0;
+      font-size: 0.75rem;
+      color: $color-text-muted;
+    }
+  }
+
+  mat-card {
+    gap: 12px !important;
+    margin-top: 1rem;
   }
 
   .card_info {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2px;
+    flex: 1;
   }
 
   .card_actions {
     display: flex;
-    gap: 10px;
+    gap: 8px;
   }
 }

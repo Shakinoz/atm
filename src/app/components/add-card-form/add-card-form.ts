@@ -27,6 +27,7 @@ export class AddCardForm {
   public readonly customers = JSON.parse(localStorage.getItem('customers') || '[]');
   private readonly _snackBar = inject(MatSnackBar);
   public readonly cardAdded = output<void>();
+  public readonly formClosed = output<void>();
 
   public readonly cardForm = new FormGroup({
     customer: new FormControl<string | null>(null, [Validators.required]),
@@ -79,5 +80,9 @@ export class AddCardForm {
         this.cardAdded.emit();
       }
     }
+  }
+
+  public closeForm(): void {
+    this.formClosed.emit();
   }
 }

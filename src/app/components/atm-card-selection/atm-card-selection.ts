@@ -1,5 +1,4 @@
 import { Component, output } from '@angular/core';
-import { CUSTOMERS } from '../../models/data/customers.mock';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { Card } from '../../models/card';
@@ -11,7 +10,7 @@ import { Card } from '../../models/card';
   styleUrl: './atm-card-selection.scss',
 })
 export class AtmCardSelection {
-  public readonly customers = JSON.parse(localStorage.getItem('customers') || '[]');
+  public readonly customers = JSON.parse(localStorage.getItem('customers') || '[]')
 
   public readonly onChooseCard = output<Card>();
 

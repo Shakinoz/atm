@@ -1,0 +1,187 @@
+@use '../../../style/variables.scss' as *;
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+// ============================================================
+// VARIABLES locales (héritées du thème global)
+// ============================================================
+$accent: $color-accent;
+$accent-dark: $color-accent-dark;
+$bg: $color-bg-primary;
+$bg-card: $color-bg-secondary;
+$bg-hover: $color-bg-tertiary;
+$text: $color-text-primary;
+$text-muted: $color-text-secondary;
+$border: $color-border;
+$border-accent: $color-border-accent;
+
+// ============================================================
+// LANDING PAGE
+// ============================================================
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: calc(100vh - 64px);
+  padding: 3rem 2rem;
+  background-color: $bg;
+}
+
+.badge {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: $bg-card;
+  border: 1px solid $border;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $text-muted;
+  margin-bottom: 2rem;
+}
+
+.landing-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: $text;
+  margin: 0 0 1rem;
+  line-height: 1.15;
+  max-width: 700px;
+
+  .accent {
+    color: $accent;
+  }
+}
+
+.landing-desc {
+  font-size: 1rem;
+  color: $text-muted;
+  max-width: 500px;
+  margin: 0 0 2.5rem;
+  line-height: 1.7;
+}
+
+.landing-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 3.5rem;
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 13px 32px;
+    background-color: $accent;
+    color: #1a1a18;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: $radius-sm;
+    text-decoration: none;
+    transition:
+      background-color $transition-base,
+      transform $transition-fast;
+
+    &:hover {
+      background-color: $accent-dark;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 13px 32px;
+    background-color: transparent;
+    color: $text;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: $radius-sm;
+    border: 1px solid $border;
+    text-decoration: none;
+    transition: all $transition-base;
+
+    &:hover {
+      background-color: $bg-hover;
+      border-color: $border-accent;
+      color: $accent;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 560px;
+  width: 100%;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px;
+  background-color: $bg-card;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  text-align: left;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: $border-accent;
+    background-color: $bg-hover;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    background-color: $bg-hover;
+    border: 1px solid $border;
+    border-radius: $radius-sm;
+    color: $text-muted;
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .feature-content {
+    h3 {
+      margin: 0 0 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: $text;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.78rem;
+      color: $text-muted;
+      line-height: 1.4;
+    }
+  }
+}

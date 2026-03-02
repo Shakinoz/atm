@@ -1,38 +1,164 @@
-
-// Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
+@use './style/variables.scss' as *;
 @use '@angular/material' as mat;
+
+* {
+  box-sizing: border-box;
+}
 
 html {
   height: 100%;
-  @include mat.theme((
-    color: (
-      primary: mat.$magenta-palette,
-      tertiary: mat.$violet-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$yellow-palette,
+        tertiary: mat.$orange-palette,
+      ),
+      typography: 'Roboto',
+      density: 0,
+    )
+  );
 }
 
 body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
-  color-scheme: light;
-
-  // Set a default background, font and text colors for the application using
-  // Angular Material's system-level CSS variables. Learn more about these
-  // variables at https://material.angular.dev/guide/system-variables
-  background-color: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-medium);
-
-  // Reset the user agent margin.
+  color-scheme: dark;
   margin: 0;
   height: 100%;
+  background-color: $color-bg-primary;
+  color: $color-text-primary;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
-/* You can add global styles to this file, and also import other style files */
+
+.mat-toolbar {
+  background-color: $color-bg-secondary !important;
+  color: $color-text-primary !important;
+  border-bottom: 1px solid $color-border !important;
+}
+
+mat-card {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 12px 16px !important;
+  gap: 12px !important;
+  margin-bottom: 8px !important;
+  transition: all $transition-base !important;
+  background-color: $color-bg-secondary !important;
+  color: $color-text-primary !important;
+  border: 1px solid $color-border !important;
+  border-radius: $radius-md !important;
+  box-shadow: $shadow-sm !important;
+
+  mat-card-actions {
+    button {
+      background-color: $color-accent !important;
+      color: $color-bg-primary !important;
+      font-weight: 700 !important;
+      border-radius: $radius-sm !important;
+      &:hover {
+        background-color: $color-accent-dark !important;
+      }
+    }
+  }
+
+  &:hover {
+    border-color: $color-border-accent !important;
+    background-color: $color-bg-tertiary !important;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    width: 4px;
+    min-width: 4px;
+    height: 32px;
+    background-color: $color-accent;
+    border-radius: 2px;
+  }
+}
+
+[matButton='filled'] {
+  background-color: $color-accent !important;
+  color: $color-bg-primary !important;
+  font-weight: 700 !important;
+  border-radius: $radius-sm !important;
+  width: 100%;
+  padding: 10px 20px !important;
+  &:hover {
+    background-color: $color-accent-dark !important;
+  }
+}
+
+.mat-mdc-fab,
+.mat-mdc-mini-fab,
+.mat-mdc-extended-fab {
+  background-color: $color-bg-surface !important;
+  margin-top: 1rem;
+  color: $color-error !important;
+}
+
+.mat-icon-button {
+  color: $color-text-secondary !important;
+  &:hover {
+    color: $color-accent !important;
+  }
+}
+
+.mat-form-field {
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: $color-border !important;
+  }
+  &.mat-focused {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: $color-accent !important;
+    }
+  }
+  .mat-floating-label {
+    color: $color-accent !important;
+  }
+  .mat-select-value,
+  input {
+    color: $color-text-primary !important;
+  }
+  .mdc-text-field--outlined {
+    background-color: $color-bg-tertiary !important;
+    border-radius: $radius-sm !important;
+  }
+}
+
+.mat-expansion-panel {
+  background-color: $color-bg-primary !important;
+  color: $color-text-primary !important;
+  border: 1px solid $color-border !important;
+  border-radius: $radius-md !important;
+  margin-bottom: 8px !important;
+  box-shadow: none !important;
+  &.mat-expanded {
+    border-color: $color-border-accent !important;
+  }
+  .mat-expansion-panel-header {
+    border-radius: $radius-md $radius-md 0 0 !important;
+  }
+  .mat-expansion-panel-header:hover {
+    background-color: $color-bg-tertiary !important;
+  }
+  .mat-expansion-panel-header-title {
+    color: $color-text-primary !important;
+    font-weight: 500 !important;
+  }
+  .mat-expansion-panel-body {
+    padding-top: 1rem !important;
+    color: $color-accent;
+  }
+  .mat-expansion-indicator::after {
+    color: $color-text-secondary !important;
+  }
+}
+.mat-form-field-error {
+  color: $color-error !important;
+}

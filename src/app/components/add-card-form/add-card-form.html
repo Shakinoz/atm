@@ -61,8 +61,15 @@
         }
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="cardForm.invalid">
-        Créer la carte
-    </button>
+
+
+    <div class="form-actions">
+        <button mat-raised-button type="button" (click)="closeForm()">
+            Annuler
+        </button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="cardForm.invalid">
+            Créer la carte
+        </button>
+    </div>
 
 </form>

@@ -45,4 +45,14 @@ export class Card {
       throw new Error('Le montant doit être positif et supérieur pour faire un retrait');
     }
   }
+
+  public static fromJSON(data: any): Card {
+    return new Card(
+      data._cardNumber,
+      data._type,
+      data._bank,
+      data._pin,
+      data._balance
+    );
+  }
 }

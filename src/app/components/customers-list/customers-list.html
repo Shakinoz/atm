@@ -38,5 +38,7 @@
 }
 
 @if(AddCardForm) {
-<app-add-card-form (cardAdded)="hideAddCardForm()"></app-add-card-form>
+<div class="backdrop" (click)="hideAddCardForm()"></div>
+<app-add-card-form (cardAdded)="hideAddCardForm()" (formClosed)="hideAddCardForm()"
+    (click)="$event.stopPropagation()"></app-add-card-form>
 }

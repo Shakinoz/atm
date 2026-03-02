@@ -16,6 +16,7 @@ export class AtmScreen {
   public readonly AtmStep = AtmStep;
 
   public currentStep = AtmStep.LANDING;
+  public customers = JSON.parse(localStorage.getItem('customers') || '[]');
   public selectedCard?: Card;
   public erroMessage?: string;
 
@@ -23,8 +24,8 @@ export class AtmScreen {
     this.currentStep = step;
   }
 
-  public handleSelectCard(card: Card) {
-    this.selectedCard = card;
+  public handleSelectCard(card: any) {
+    this.selectedCard = Card.fromJSON(card);
     this.changeStep(AtmStep.PIN_PAD);
   }
 

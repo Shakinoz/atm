@@ -65,6 +65,7 @@ export class AtmActionsMenu {
 
   public handleDeposit(): void {
     this.currentCard().deposit(this.deposit.value!);
+    this.saveCardToLocalStorage();
     this.deposit.reset();
 
     this._snackBar.open('Le dépot est bien validé !', '', {
@@ -76,6 +77,7 @@ export class AtmActionsMenu {
 
   public handleWithdrawl(): void {
     this.currentCard().withdrawal(this.withdrawal.value!);
+    this.saveCardToLocalStorage();
     this.withdrawal.reset();
 
     this._snackBar.open('Le retrait est bien validé !', '', {
@@ -98,5 +100,22 @@ export class AtmActionsMenu {
 
   public handleLeave():void {
     this.onLeave.emit(AtmStep.LANDING)
+  }
+
+  private saveCardToLocalStorage(): void {
+    const customers = JSON.parse(localStorage.getItem('customers') || '[]');
+    const card = this.currentCard();
+    
+    for (const customer of customers) {
+      const cardIndex = customer._cards.findIndex(
+        (c: any) => c._cardNumber === card.cardNumber
+      );
+      if (cardIndex !== -1) {
+        customer._cards[cardIndex]._balance = card.balance;
+        break;
+      }
+    }
+    
+    localStorage.setItem('customers', JSON.stringify(customers));
   }
 }

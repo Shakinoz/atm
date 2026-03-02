@@ -1,9 +1,10 @@
 import { Component, output } from '@angular/core';
 import { MatButton } from '@angular/material/button';
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-atm-landing',
-  imports: [MatButton],
+  imports: [MatButton, MatIcon],
   templateUrl: './atm-landing.html',
   styleUrl: './atm-landing.scss',
 })

@@ -1,0 +1,38 @@
+// --- Couleurs principales ---
+$color-bg-primary: #1c1c18;
+$color-bg-secondary: #252520;
+$color-bg-tertiary: #2e2e28;
+$color-bg-surface: #323229;
+
+// --- Accent (jaune/or) ---
+$color-accent: #f0c040;
+$color-accent-dark: #c99a20;
+$color-accent-muted: rgba(240, 192, 64, 0.12);
+
+// --- Texte ---
+$color-text-primary: #f0ede0;
+$color-text-secondary: #9e9a85;
+$color-text-muted: #5c5a4e;
+
+// --- Statut ---
+$color-error: #e05252;
+$color-success: #6ab04c;
+
+// --- Bordures ---
+$color-border: #3a3a30;
+$color-border-accent: rgba(240, 192, 64, 0.15);
+
+// --- Ombres ---
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+$shadow-md: 0 4px 20px rgba(0, 0, 0, 0.5);
+$shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.6);
+
+// --- Rayons ---
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 18px;
+$radius-xl: 24px;
+
+// --- Transitions ---
+$transition-fast: 0.15s ease;
+$transition-base: 0.25s ease;

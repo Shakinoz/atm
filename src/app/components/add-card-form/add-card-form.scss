@@ -1,0 +1,61 @@
+@use '../../../style/variables.scss' as *;
+
+:host {
+  display: block;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: $color-bg-secondary;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  z-index: 1000;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    mat-form-field {
+      width: 100%;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+
+      button {
+        flex: 1;
+        padding: 12px 24px;
+        border-radius: $radius-sm !important;
+        font-weight: 700 !important;
+
+        &[type='submit'] {
+          background-color: $color-accent !important;
+          color: $color-bg-primary !important;
+
+          &:hover {
+            background-color: $color-accent-dark !important;
+          }
+          &:disabled {
+            opacity: 0.4 !important;
+            cursor: not-allowed;
+          }
+        }
+
+        &[type='button'] {
+          background-color: #666 !important;
+          color: $color-text-primary !important;
+
+          &:hover {
+            background-color: #777 !important;
+          }
+        }
+      }
+    }
+  }
+}
